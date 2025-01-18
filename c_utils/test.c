@@ -4,7 +4,7 @@
 int charTest() {
     printf("=== Dynamic Array String Tests ===\n");
 
-    // 1. Create a dynamic array for characters
+    //Create
     printf("1. Creating dynamic array for characters...\n");
     DynamicArray* charArray = dynamicArrayConstructor(5, CHAR);
     if (charArray == NULL) {
@@ -13,42 +13,42 @@ int charTest() {
     }
     printf("Dynamic array created with initial capacity %d.\n", charArray->capacity);
 
-    // 2. Push strings into the array one character at a time
+    //Push
     printf("\n2. Adding characters to the array...\n");
     char* testString = "hello";
     for (int i = 0; i < strlen(testString); i++) {
-        push(charArray, &testString[i]);
-        printf("Added: %c\n", *(char*)get(charArray, i));
+        push_element(charArray, &testString[i]);
+        printf("Added: %c\n", *(char*)get_element(charArray, i));
     }
 
-    // 3. Add more characters to trigger resizing
+    //Add
     printf("\n3. Adding more characters to trigger resize...\n");
     char additionalChars[] = " world!";
     for (int i = 0; i < strlen(additionalChars); i++) {
-        push(charArray, &additionalChars[i]);
+        push_element(charArray, &additionalChars[i]);
     }
 
     printf("Array contents after adding: ");
     for (int i = 0; i < charArray->size; i++) {
-        printf("%c", *(char*)get(charArray, i));
+        printf("%c", *(char*)get_element(charArray, i));
     }
     printf("\nNew capacity after resize: %d\n", charArray->capacity);
 
-    // 4. Pop characters and print the array
+    //Pop
     printf("\n4. Popping characters from the array...\n");
     for (int i = 0; i < 3; i++) {
-        pop(charArray);
+        pop_element(charArray);
     }
 
     printf("Array contents after popping: ");
     for (int i = 0; i < charArray->size; i++) {
-        printf("%c", *(char*)get(charArray, i));
+        printf("%c", *(char*)get_element(charArray, i));
     }
     printf("\nArray size after popping: %d\n", charArray->size);
 
-    // 5. Free the dynamic array
+    //Free
     printf("\n5. Freeing the dynamic array...\n");
-    freeDynamicArray(charArray);
+    dynamicArrayDeconstuctor(charArray);
     printf("Dynamic array freed successfully.\n");
 
     return 1;
@@ -57,7 +57,7 @@ int charTest() {
 int intTest() {
     printf("=== Dynamic Array Tests ===\n");
 
-    // 1. Create a dynamic array for integers
+    //Create
     printf("1. Creating dynamic array...\n");
     DynamicArray* d = dynamicArrayConstructor(2, INT);
     if (d == NULL) {
@@ -66,42 +66,42 @@ int intTest() {
     }
     printf("Dynamic array created with initial capacity %d.\n", d->capacity);
 
-    // 2. Push elements into the array
+    //Push
     int a = 10, b = 20, c = 30;
     printf("\n2. Adding elements...\n");
-    push(d, &a);
-    push(d, &b);
-    printf("Added: %d, %d\n", *(int*)get(d, 0), *(int*)get(d, 1));
+    push_element(d, &a);
+    push_element(d, &b);
+    printf("Added: %d, %d\n", *(int*)get_element(d, 0), *(int*)get_element(d, 1));
 
-    // 3. Test resizing by adding more elements
+    //Test
     printf("\n3. Adding an element to trigger resize...\n");
-    push(d, &c);
-    printf("Added: %d\n", *(int*)get(d, 2));
+    push_element(d, &c);
+    printf("Added: %d\n", *(int*)get_element(d, 2));
     printf("New capacity after resize: %d\n", d->capacity);
 
-    // 4. Access all elements
+    //Access
     printf("\n4. Accessing all elements...\n");
     for (int i = 0; i < d->size; i++) {
-        printf("Element %d: %d\n", i, *(int*)get(d, i));
+        printf("Element %d: %d\n", i, *(int*)get_element(d, i));
     }
 
-    // 5. Pop elements
+    //Pop
     printf("\n5. Popping an element...\n");
-    pop(d);
+    pop_element(d);
     printf("Array size after pop: %d\n", d->size);
     for (int i = 0; i < d->size; i++) {
-        printf("Element %d: %d\n", i, *(int*)get(d, i));
+        printf("Element %d: %d\n", i, *(int*)get_element(d, i));
     }
 
-    // 6. Test pop on empty array
+    //Test
     printf("\n6. Testing pop on an empty array...\n");
-    pop(d);
-    pop(d); // Pops remaining elements
-    pop(d); // Should print an error message
+    pop_element(d);
+    pop_element(d);
+    pop_element(d); // Should print an error message
 
-    // 7. Free the dynamic array
+    //Free
     printf("\n7. Freeing the dynamic array...\n");
-    freeDynamicArray(d);
+    dynamicArrayDeconstuctor(d);
     printf("Dynamic array freed successfully.\n");
 
     return 1;
