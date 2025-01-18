@@ -1,0 +1,8 @@
+﻿  DynamicArray.c
+C:\Users\Ori\source\repos\c_utils\c_utils\DynamicArray.c(7,3): warning C4033: 'dynamicArrayConstructor' must return a value
+C:\Users\Ori\source\repos\c_utils\c_utils\DynamicArray.c(13,3): warning C4033: 'dynamicArrayConstructor' must return a value
+  main.c
+  test.c
+  Generating Code...
+C:\Users\Ori\source\repos\c_utils\c_utils\DynamicArray.c(41,1): warning C4715: 'dynamicArrayConstructor': not all control paths return a value
+  c_utils.vcxproj -> C:\Users\Ori\source\repos\c_utils\x64\Debug\c_utils.exe
